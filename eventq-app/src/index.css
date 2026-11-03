@@ -18,3 +18,64 @@ body,
 body {
   overflow-x: hidden;
 }
+
+/* EVENTPULSE — READABILITY FIX */
+
+.min-h-screen main .text-slate-900,
+.min-h-screen main .text-slate-800,
+.min-h-screen main .text-gray-900,
+.min-h-screen main .text-gray-800 {
+  color: #edf4ff !important;
+}
+
+.min-h-screen main .text-slate-700,
+.min-h-screen main .text-slate-600 {
+  color: #b5c4d8 !important;
+}
+
+/* KPI numbers */
+.min-h-screen main .text-2xl,
+.min-h-screen main .text-3xl,
+.min-h-screen main .text-4xl {
+  color: #f1f5f9;
+}
+
+/* Card and chart headings */
+.min-h-screen main h2,
+.min-h-screen main h3 {
+  color: #edf4ff !important;
+}
+
+/* Chart labels */
+.min-h-screen main .recharts-text {
+  fill: #a8b8cc;
+}
+
+.min-h-screen main .recharts-cartesian-grid line {
+  stroke: #293c52;
+}
+
+/* Consistent teal accents */
+.min-h-screen main .text-blue-600 {
+  color: #55dbc5 !important;
+}
+/* EventPulse mobile header refinement */
+@media (max-width: 640px) {
+  .ep-page header a {
+    flex-shrink: 0;
+  }
+
+  .ep-page header button {
+    flex-shrink: 0;
+    white-space: nowrap;
+    min-width: max-content;
+    padding: 9px 10px;
+    font-size: 9px;
+  }
+
+  .ep-page header button svg {
+    flex-shrink: 0;
+    width: 13px;
+    height: 13px;
+  }
+}

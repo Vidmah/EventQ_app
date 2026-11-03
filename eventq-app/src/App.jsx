@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef, Component } from 'react';
+import LandingPage from './LandingPage';
 import { 
   BarChart, Bar, LineChart, Line, ScatterChart, Scatter, PieChart, Pie, Cell,
   RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis,
@@ -1211,6 +1212,7 @@ const PuneLeafletMap = ({ events, selectedArea, onSelectEvent }) => {
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
+  const [showLandingPage, setShowLandingPage] = useState(true);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -1628,103 +1630,124 @@ export default function App() {
     }
   ];
 
+  if (showLandingPage) {
+    return <LandingPage onEnterDashboard={() => setShowLandingPage(false)} />;
+  }
+
   return (
     <ErrorBoundary>
-      <div className="min-h-screen bg-slate-100 text-slate-800 flex flex-col font-sans">
+      <div className="ep-shell min-h-screen bg-[#080F1C] text-slate-100 flex flex-col font-sans">
         
         {/* Top Header Bar */}
-        <header className="bg-blue border-b border-slate-200 px-4 py-3 shadow-sm sticky top-0 z-40 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <button 
-              onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-              className="p-1.5 rounded-lg hover:bg-slate-100 text-slate-600 transition hidden md:flex items-center justify-center border border-slate-200"
-              title={isSidebarCollapsed ? "Expand Side Taskbar" : "Collapse Side Taskbar"}
-            >
-              {isSidebarCollapsed ? <PanelLeftOpen className="w-5 h-5 text-blue-600" /> : <PanelLeftClose className="w-5 h-5 text-slate-600" />}
-            </button>
+        
+{/* Top Header Bar */}
+<header className="sticky top-0 z-40 border-b border-[#263B52] bg-[#0B1625]/95 backdrop-blur-xl">
+  <div className="flex min-h-[76px] items-center justify-between gap-3 px-4 sm:px-6">
 
-            <button 
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-1.5 rounded-lg hover:bg-slate-100 text-slate-600 md:hidden border border-slate-200"
-            >
-              <Menu className="w-5 h-5" />
-            </button>
+    {/* Brand */}
+    <div className="flex items-center gap-3">
+      <button
+        onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+        className="hidden md:flex items-center justify-center rounded-lg border border-[#2A4059] p-2 text-slate-300 hover:bg-[#17263A]"
+        title={isSidebarCollapsed ? "Expand Sidebar" : "Collapse Sidebar"}
+      >
+        {isSidebarCollapsed
+          ? <PanelLeftOpen className="h-5 w-5" />
+          : <PanelLeftClose className="h-5 w-5" />}
+      </button>
 
-            <div className="flex items-center gap-2.5">
-              <div className="p-2 bg-blue-600 rounded-lg text-white shadow-sm">
-                <BarChart3 className="w-5 h-5" />
-              </div>
-              <div>
-                <h1 className="text-sm md:text-base font-bold text-slate-900 leading-tight">
-                  EventPulse
-                </h1>
-                <p className="text-[11px] text-slate-500 font-bold hidden sm:flex items-center gap-1.5">
-                  <MapPin className="w-3 h-3 text-blue-600" />
-                  Pune City  
-                </p>
-              </div>
-            </div>
-          </div>
+      <button
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        className="rounded-lg border border-[#2A4059] p-2 text-slate-300 md:hidden"
+      >
+        <Menu className="h-5 w-5" />
+      </button>
 
-          <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3">
+        <div className="rounded-xl border border-[#28605D] bg-[#14343B] p-2.5 text-[#55DBC5]">
+          <BarChart3 className="h-6 w-6" />
+        </div>
 
-  {/* Pune reference location */}
-  <div className="hidden lg:flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg">
-    <MapPin className="w-3.5 h-3.5 text-blue-600" />
-    <div className="flex flex-col leading-tight">
-      <span className="text-[9px] text-slate-400 font-semibold uppercase">Pune Reference</span>
-      <span className="text-[11px] text-slate-700 font-bold">
-        {puneReferenceLocation.lat.toFixed(4)}, {puneReferenceLocation.lng.toFixed(4)}
-      </span>
+        <div>
+          <h1 className="text-base font-bold tracking-tight text-white sm:text-lg">
+            EventPulse<span className="text-[#55DBC5]">.</span>
+          </h1>
+          <p className="flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.16em] text-slate-400">
+            <MapPin className="h-3 w-3 text-[#55DBC5]" />
+            Urban Intelligence · Pune
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {/* System information and actions */}
+    <div className="flex items-center gap-2 sm:gap-3">
+
+      {/* Location */}
+      <div className="hidden lg:flex items-center gap-2 rounded-xl border border-[#263B52] bg-[#101D2D] px-3 py-2">
+        <MapPin className="h-4 w-4 text-[#55DBC5]" />
+        <div>
+          <p className="text-[9px] uppercase tracking-wider text-slate-500">
+            Pune Reference
+          </p>
+          <p className="text-[11px] font-semibold text-slate-200">
+            {puneReferenceLocation.lat.toFixed(4)}, {puneReferenceLocation.lng.toFixed(4)}
+          </p>
+        </div>
+      </div>
+
+      {/* Date and time */}
+      <div className="hidden md:flex items-center gap-3 rounded-xl border border-[#263B52] bg-[#101D2D] px-3 py-2">
+        <div>
+          <p className="text-[9px] uppercase tracking-wider text-slate-500">Date</p>
+          <p className="text-[11px] font-semibold text-slate-200">{currentDate}</p>
+        </div>
+
+        <div className="h-7 w-px bg-[#344B63]" />
+
+        <div>
+          <p className="text-[9px] uppercase tracking-wider text-slate-500">Local Time</p>
+          <p className="text-[11px] font-bold text-[#55DBC5]">{currentTime}</p>
+        </div>
+      </div>
+
+      {/* Predictor action */}
+      <button
+        onClick={() => setActiveTab('predictor')}
+        className="flex items-center gap-2 rounded-xl border border-[#327C75] bg-[#143C40] px-3 py-2.5 text-xs font-bold text-[#72E5D0] transition hover:bg-[#1A5051] sm:px-4"
+      >
+        <Zap className="h-4 w-4" />
+        <span className="hidden sm:inline">Event Predictor</span>
+        <span className="sm:hidden">Predict</span>
+      </button>
+
+      {/* WEKA download */}
+      <button
+        onClick={downloadArff}
+        title="Download WEKA ARFF File"
+        className="flex items-center gap-2 rounded-xl border border-[#263B52] bg-[#101D2D] px-3 py-2.5 text-xs font-semibold text-slate-300 transition hover:border-[#55DBC5] hover:text-[#55DBC5]"
+      >
+        <Download className="h-4 w-4" />
+        <span className="hidden sm:inline">WEKA ARFF</span>
+      </button>
+
     </div>
   </div>
+</header>
 
-  {/* Live browser date and time */}
-  <div className="hidden md:flex items-center gap-3 px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg min-w-[155px]">
-    <div className="flex flex-col leading-tight">
-      <span className="text-[8px] text-slate-400 font-semibold uppercase">Date</span>
-      <span className="text-[11px] text-slate-700 font-bold whitespace-nowrap">{currentDate}</span>
-    </div>
-    <div className="h-6 w-px bg-slate-200"></div>
-    <div className="flex flex-col leading-tight">
-      <span className="text-[8px] text-slate-400 font-semibold uppercase">Time</span>
-      <span className="text-[11px] text-blue-600 font-bold whitespace-nowrap">{currentTime}</span>
-    </div>
-  </div>
-  {/* Event Predictor */}
-  <button
-    onClick={() => setActiveTab('predictor')}
-    className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg shadow-sm transition"
-  >
-    <Zap className="w-3.5 h-3.5 fill-white" />
-    Event Predictor
-  </button>
-
-  {/* WEKA */}
-  <button 
-    onClick={downloadArff}
-    className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-semibold rounded-md border border-blue-200 transition"
-    title="Download WEKA ARFF File"
-  >
-    <Download className="w-3.5 h-3.5" />
-    <span className="hidden sm:inline">WEKA</span> ARFF
-  </button>
-
-</div>
-        </header>
 
         <div className="flex-1 flex overflow-hidden">
 
           {/* VERTICAL SIDE TASKBAR */}
           <aside 
-            className={`bg-white border-r border-slate-200 flex flex-col justify-between transition-all duration-300 z-30 shrink-0 ${
+            className={`bg-[#0C1727] border-r border-[#26384D] flex flex-col justify-between transition-all duration-300 z-30 shrink-0 ${
               isSidebarCollapsed ? 'w-16' : 'w-64'
             } ${isMobileMenuOpen ? 'fixed inset-y-0 left-0 w-64 shadow-2xl z-50' : 'hidden md:flex'}`}
           >
             <div className="flex-1 overflow-y-auto py-3 px-2 space-y-4">
               
               {!isSidebarCollapsed && (
-                <div className="px-3 pb-2 border-b border-slate-100 flex items-center justify-between">
+                <div className="px-3 pb-2 border-b border-[#26384D] flex items-center justify-between">
                   <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Navigation Port </p>
                 </div>
               )}
@@ -1748,8 +1771,8 @@ export default function App() {
                         }}
                         className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium transition-all ${
                           isActive 
-                            ? 'bg-blue-600 text-white font-semibold shadow-sm' 
-                            : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                            ? 'bg-[#14343B] text-[#55DBC5] font-semibold shadow-sm border-l-[3px] border-[#55DBC5]' 
+                            : 'text-slate-400 hover:bg-[#17263A] hover:text-slate-100'
                         }`}
                         title={isSidebarCollapsed ? item.label : undefined}
                       >
@@ -1762,7 +1785,7 @@ export default function App() {
               ))}
             </div>
 
-            <div className="p-3 border-t border-slate-200 bg-slate-50 text-center">
+            <div className="p-3 border-t border-[#26384D] bg-[#0A1422] text-center">
               {!isSidebarCollapsed ? (
                 <p className="text-[10px] text-slate-400 font-medium">
                   Pune Spatial Mining Engine
@@ -1774,37 +1797,57 @@ export default function App() {
           </aside>
 
           {/* MAIN WORKSPACE CONTENT */}
-          <main className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6">
+          <main className="ep-workspace flex-1 overflow-y-auto bg-[#080F1C] p-4 sm:p-6 space-y-6">
 
             {/* 1. EXECUTIVE DASHBOARD */}
             {activeTab === 'dashboard' && (
               <div className="space-y-6">
                 
-                {/* Predictor Banner Direct Link */}
-                <div className="bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white p-4 sm:p-5 rounded-xl shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                  <div className="flex items-center gap-3.5">
-                    <div className="p-3 bg-white/20 rounded-xl backdrop-blur shrink-0">
-                      <Zap className="w-6 h-6 text-white fill-white animate-pulse" />
+                {/* Premium Event Predictor Banner */}
+                <div className="relative overflow-hidden rounded-2xl border border-[#28605D] bg-[#101D2D] p-5 sm:p-7">
+                  <div className="pointer-events-none absolute -right-16 -top-24 h-64 w-64 rounded-full bg-[#55DBC5]/10 blur-3xl" />
+                  <div className="pointer-events-none absolute bottom-0 right-1/3 h-32 w-32 rounded-full bg-[#55DBC5]/5 blur-2xl" />
+
+                  <div className="relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+                    <div className="flex items-start gap-4">
+                      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-[#347D76] bg-[#153C40] text-[#55DBC5]">
+                        <Zap className="h-7 w-7" />
+                      </div>
+
+                      <div className="max-w-2xl">
+                        <div className="mb-2 flex flex-wrap items-center gap-2">
+                          <span className="rounded-full border border-[#347D76] bg-[#14343B] px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.16em] text-[#72E5D0]">
+                            Intelligence Engine
+                          </span>
+                          <span className="text-[10px] font-medium tracking-wider text-slate-500">
+                            EVENT ANALYSIS / 01
+                          </span>
+                        </div>
+
+                        <h2 className="text-xl font-bold tracking-tight text-white sm:text-2xl">
+                          Predict the impact before it happens.
+                        </h2>
+
+                        <p className="mt-2 max-w-xl text-xs leading-6 text-slate-400 sm:text-sm">
+                          Simulate event conditions, analyse urban pressure and understand
+                          potential traffic, crowd, parking and mobility impacts across Pune.
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-bold text-sm sm:text-base">Simulate & Predict New Event Impact</h3>
-                      <p className="text-xs text-blue-100 mt-0.5">
-                        Run multi-model consensus predictions, XAI feature contributions, and traffic warden allocation for any Pune venue.
-                      </p>
-                    </div>
+
+                    <button
+                      onClick={() => setActiveTab('predictor')}
+                      className="group flex shrink-0 items-center justify-between gap-4 rounded-xl border border-[#347D76] bg-[#143C40] px-5 py-3.5 text-sm font-bold text-[#72E5D0] transition duration-200 hover:-translate-y-0.5 hover:bg-[#1A5051] hover:shadow-lg hover:shadow-[#55DBC5]/10"
+                    >
+                      <span>Launch Prediction Engine</span>
+                      <ChevronRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                    </button>
                   </div>
-                  <button
-                    onClick={() => setActiveTab('predictor')}
-                    className="px-4 py-2.5 bg-white text-blue-700 hover:bg-blue-50 text-xs font-bold rounded-lg shadow-sm transition-all flex items-center gap-2 shrink-0 border border-white/40"
-                  >
-                    <Play className="w-4 h-4 fill-blue-700" />
-                    Launch Event Predictor
-                  </button>
                 </div>
 
                 {/* KPI Cards */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
+                  <div className="bg-[#101D2D] p-5 rounded-xl border border-[#263B52] shadow-lg shadow-black/10 flex items-center justify-between">
                     <div>
                       <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Registered Events</p>
                       <p className="text-2xl font-bold text-slate-900 mt-1">{calculatedDataset.length}</p>
@@ -1815,7 +1858,7 @@ export default function App() {
                     </div>
                   </div>
 
-                  <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
+                  <div className="bg-[#101D2D] p-5 rounded-xl border border-[#263B52] shadow-lg shadow-black/10 flex items-center justify-between">
                     <div>
                       <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">High Risk Pune Events</p>
                       <p className="text-2xl font-bold text-red-600 mt-1">
@@ -1828,7 +1871,7 @@ export default function App() {
                     </div>
                   </div>
 
-                  <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
+                  <div className="bg-[#101D2D] p-5 rounded-xl border border-[#263B52] shadow-lg shadow-black/10 flex items-center justify-between">
                     <div>
                       <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Avg Traffic Congestion</p>
                       <p className="text-2xl font-bold text-slate-900 mt-1">
@@ -1841,7 +1884,7 @@ export default function App() {
                     </div>
                   </div>
 
-                  <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
+                  <div className="bg-[#101D2D] p-5 rounded-xl border border-[#263B52] shadow-lg shadow-black/10 flex items-center justify-between">
                     <div>
                       <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Avg Parking Stress</p>
                       <p className="text-2xl font-bold text-slate-900 mt-1">
@@ -1855,52 +1898,112 @@ export default function App() {
                   </div>
                 </div>
 
-                {/* Dashboard Charts Row */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-                    <h3 className="text-xs font-bold text-slate-700 uppercase mb-3">Event Risk Category Distribution</h3>
-                    <div className="h-[220px]">
-                      <ResponsiveContainer width="100%" height="100%">
-                        <PieChart>
-                          <Pie
-                            data={[
-                              { name: 'HIGH Risk', value: calculatedDataset.filter(d => d.Impact_Category === 'HIGH').length, fill: '#ef4444' },
-                              { name: 'MEDIUM Risk', value: calculatedDataset.filter(d => d.Impact_Category === 'MEDIUM').length, fill: '#f59e0b' },
-                              { name: 'LOW Risk', value: calculatedDataset.filter(d => d.Impact_Category === 'LOW').length, fill: '#10b981' }
-                            ]}
-                            dataKey="value"
-                            nameKey="name"
-                            cx="50%"
-                            cy="50%"
-                            outerRadius={80}
-                            label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
-                          />
-                          <Tooltip />
-                        </PieChart>
-                      </ResponsiveContainer>
-                    </div>
-                  </div>
+                
+{/* Dashboard Charts Row */}
+<div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+  <div className="bg-[#101D2D] p-5 rounded-xl border border-[#263B52] shadow-lg">
+    <h3 className="text-sm font-bold text-[#EDF4FF] uppercase tracking-wide mb-4">
+      Event Risk Category Distribution
+    </h3>
+    <div className="h-[260px]">
+      <ResponsiveContainer width="100%" height="100%">
+        <PieChart>
+          <Pie
+            data={[
+              { name: 'HIGH Risk', value: calculatedDataset.filter(d => d.Impact_Category === 'HIGH').length, fill: '#FF6B6B' },
+              { name: 'MEDIUM Risk', value: calculatedDataset.filter(d => d.Impact_Category === 'MEDIUM').length, fill: '#F5B95C' },
+              { name: 'LOW Risk', value: calculatedDataset.filter(d => d.Impact_Category === 'LOW').length, fill: '#55DBC5' }
+            ]}
+            dataKey="value"
+            nameKey="name"
+            cx="50%"
+            cy="45%"
+            outerRadius={85}
+            stroke="#101D2D"
+            strokeWidth={3}
+            label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+            labelLine={{ stroke: '#91A3BB' }}
+          />
+          <Tooltip
+            contentStyle={{
+              backgroundColor: '#142338',
+              border: '1px solid #344B63',
+              borderRadius: '12px',
+              color: '#EDF4FF'
+            }}
+          />
+        </PieChart>
+      </ResponsiveContainer>
+    </div>
+    <div className="flex justify-center gap-5 flex-wrap mt-2">
+      {[
+        { label: 'High Risk', color: '#FF6B6B' },
+        { label: 'Medium Risk', color: '#F5B95C' },
+        { label: 'Low Risk', color: '#55DBC5' }
+      ].map(item => (
+        <div key={item.label} className="flex items-center gap-2 text-xs text-slate-300">
+          <span className="w-2.5 h-2.5 rounded-full" style={{ background: item.color }} />
+          {item.label}
+        </div>
+      ))}
+    </div>
+  </div>
 
-                  <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-                    <h3 className="text-xs font-bold text-slate-700 uppercase mb-3">Attendance vs Traffic Strain Trend</h3>
-                    <div className="h-[220px]">
-                      <ResponsiveContainer width="100%" height="100%">
-                        <ComposedChart data={calculatedDataset.slice(0, 15)}>
-                          <CartesianGrid strokeDasharray="3 3" />
-                          <XAxis dataKey="Area" />
-                          <YAxis />
-                          <Tooltip />
-                          <Bar dataKey="Expected_Attendance" fill="#3b82f6" name="Attendance" />
-                          <Line type="monotone" dataKey="Traffic_Congestion" stroke="#ef4444" strokeWidth={2} name="Traffic %" />
-                        </ComposedChart>
-                      </ResponsiveContainer>
-                    </div>
-                  </div>
-                </div>
+  <div className="bg-[#101D2D] p-5 rounded-xl border border-[#263B52] shadow-lg">
+    <h3 className="text-sm font-bold text-[#EDF4FF] uppercase tracking-wide mb-4">
+      Attendance vs Traffic Strain Trend
+    </h3>
+    <div className="h-[260px]">
+      <ResponsiveContainer width="100%" height="100%">
+        <ComposedChart
+          data={calculatedDataset.slice(0, 15)}
+          margin={{ top: 10, right: 12, left: 0, bottom: 5 }}
+        >
+          <CartesianGrid stroke="#293C52" strokeDasharray="4 4" />
+          <XAxis
+            dataKey="Area"
+            tick={{ fill: '#91A3BB', fontSize: 10 }}
+            axisLine={{ stroke: '#344B63' }}
+            tickLine={false}
+          />
+          <YAxis
+            tick={{ fill: '#91A3BB', fontSize: 11 }}
+            axisLine={false}
+            tickLine={false}
+          />
+          <Tooltip
+            contentStyle={{
+              backgroundColor: '#142338',
+              border: '1px solid #344B63',
+              borderRadius: '12px',
+              color: '#EDF4FF'
+            }}
+          />
+          <Legend wrapperStyle={{ color: '#B5C4D8', fontSize: '12px' }} />
+          <Bar
+            dataKey="Expected_Attendance"
+            fill="#55DBC5"
+            name="Attendance"
+            radius={[5, 5, 0, 0]}
+          />
+          <Line
+            type="monotone"
+            dataKey="Traffic_Congestion"
+            stroke="#F5B95C"
+            strokeWidth={2.5}
+            dot={{ r: 3, fill: '#F5B95C', strokeWidth: 0 }}
+            activeDot={{ r: 6 }}
+            name="Traffic %"
+          />
+        </ComposedChart>
+      </ResponsiveContainer>
+    </div>
+  </div>
+</div>
 
                 {/* Map & Priority List Row */}
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                  <div className="lg:col-span-2 bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                  <div className="lg:col-span-2 bg-[#101D2D] p-5 rounded-xl border border-[#263B52] shadow-lg shadow-black/10">
                     <div className="flex items-center justify-between mb-3">
                       <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
                         <MapPin className="w-4 h-4 text-blue-600" />
@@ -1920,7 +2023,7 @@ export default function App() {
                     />
                   </div>
 
-                  <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                  <div className="bg-[#101D2D] p-5 rounded-xl border border-[#263B52] shadow-lg shadow-black/10 flex flex-col justify-between">
                     <div>
                       <div className="flex items-center justify-between border-b pb-2 mb-3">
                         <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
