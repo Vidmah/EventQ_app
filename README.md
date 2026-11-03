@@ -76,17 +76,6 @@ The project explores data mining and machine learning techniques, including:
 | Version Control | Git and GitHub |
 | Deployment | Vercel |
 
-## 📸 Application Preview
-
-### EventPulse Landing Page
-
-![EventPulse Pune Hero](public/pune-hero.jpg)
-
-### Dashboard Preview
-
-![EventPulse Dashboard](public/dashboard-preview.png)
-
-## ⚙️ Run Locally
 
 ### Prerequisites
 
