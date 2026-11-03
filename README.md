@@ -1,4 +1,3 @@
-# EventPULSE_app
 # EventPulse — Pune Event Impact Intelligence
 
 **See the city before the event begins.**
