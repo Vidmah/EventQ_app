@@ -2240,14 +2240,14 @@ export default function App() {
             {/* 4. LIVE APIS HUB */}
             {activeTab === 'live-apis' && (
               <div className="space-y-6">
-                <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-6">
+                <div className="bg-[#101f30] p-6 rounded-xl border border-[#2b4057] shadow-sm space-y-6">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b pb-4">
                     <div>
                       <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
                         <Globe className="w-5 h-5 text-blue-600" />
                         Live External API Integrations & Environmental Feeds
                       </h2>
-                      <p className="text-xs text-slate-500 mt-0.5">
+                      <p className="text-xs text-slate-300 mt-0.5">
                         Fetches live Pune weather, traffic flow, event discovery, and GTFS transport streams.
                       </p>
                     </div>
@@ -2349,7 +2349,7 @@ export default function App() {
                       <BarChart2 className="w-5 h-5 text-blue-600" />
                       Multi-Dimensional Weighting & Dynamic Sensitivity Simulator
                     </h2>
-                    <p className="text-xs text-slate-500 mt-0.5">
+                    <p className="text-xs text-slate-300 mt-0.5">
                       Adjust component weights, test monsoon surge scenarios, and observe real-time classification changes.
                     </p>
                   </div>
@@ -2452,7 +2452,7 @@ export default function App() {
                       <Database className="w-5 h-5 text-blue-600" />
                       Star Schema Data Warehouse Explorer & Table Metadata
                     </h2>
-                    <p className="text-xs text-slate-500 mt-0.5">
+                    <p className="text-xs text-slate-300 mt-0.5">
                       Explore the centralized <code className="text-blue-600 font-bold">FACT_EVENT_IMPACT</code> fact table and 5 supporting dimension tables.
                     </p>
                   </div>
@@ -2697,7 +2697,7 @@ export default function App() {
                         <RefreshCw className="w-5 h-5 text-blue-600" />
                         Extract, Transform & Load (ETL) Pipeline Console
                       </h2>
-                      <p className="text-xs text-slate-500 mt-0.5">
+                      <p className="text-xs text-slate-300 mt-0.5">
                         Monitors ingestion, spatial bounding check, missing value imputation, and Star Schema DW load.
                       </p>
                     </div>
@@ -2758,7 +2758,7 @@ export default function App() {
                       <Layers className="w-5 h-5 text-blue-600" />
                       Multidimensional OLAP Cube Engine (Roll-Up, Drill-Down, Slice, Dice & Pivot)
                     </h2>
-                    <p className="text-xs text-slate-500 mt-0.5">
+                    <p className="text-xs text-slate-300 mt-0.5">
                       Perform online analytical processing queries across spatial, event type, and temporal dimensions.
                     </p>
                   </div>
@@ -3057,7 +3057,7 @@ export default function App() {
                         <GitMerge className="w-5 h-5 text-blue-600" />
                         Apriori Association Rule Mining Engine & Analytics
                       </h2>
-                      <p className="text-xs text-slate-500 mt-0.5">
+                      <p className="text-xs text-slate-300 mt-0.5">
                         Discovers co-occurrence patterns between crowd sizes, weather downpours, and urban congestion.
                       </p>
                     </div>
@@ -3230,7 +3230,7 @@ export default function App() {
                         <TrendingUp className="w-5 h-5 text-blue-600" />
                         K-Means Clustering Analysis & Interactive Event Assignment Tables
                       </h2>
-                      <p className="text-xs text-slate-500 mt-0.5">
+                      <p className="text-xs text-slate-300 mt-0.5">
                         Groups events by attendance, road traffic, crowd density, and parking demand into distinct cluster profiles.
                       </p>
                     </div>
@@ -3441,7 +3441,7 @@ export default function App() {
                       <Cpu className="w-5 h-5 text-blue-600" />
                       J48 Decision Tree & Multi-Classifier Performance Matrix
                     </h2>
-                    <p className="text-xs text-slate-500 mt-0.5">
+                    <p className="text-xs text-slate-300 mt-0.5">
                       Evaluates decision trees, naive bayes, random forest, KNN, and logistic regression on holdout validation events.
                     </p>
                   </div>
@@ -3668,7 +3668,7 @@ export default function App() {
                         <Sliders className="w-5 h-5 text-blue-600" />
                         Continuous Impact Score Regression Analysis & Error Visuals
                       </h2>
-                      <p className="text-xs text-slate-500 mt-0.5">
+                      <p className="text-xs text-slate-300 mt-0.5">
                         Predicts continuous Overall_Impact_Score (0-100) using Linear Regression and Random Forest Regressor models.
                       </p>
                     </div>
@@ -3820,7 +3820,7 @@ export default function App() {
                         <Table className="w-5 h-5 text-blue-600" />
                         Comprehensive Model Benchmark Comparison & Leaderboard
                       </h2>
-                      <p className="text-xs text-slate-500 mt-0.5">
+                      <p className="text-xs text-slate-300 mt-0.5">
                         Five supervised classifiers evaluated on the same deterministic 70/30 holdout split of the Pune synthetic event dataset. All charts and rankings use the same evaluation results.
                       </p>
                     </div>
@@ -3943,7 +3943,7 @@ export default function App() {
                       <CheckCircle className="w-5 h-5 text-blue-600" />
                       5-Fold Cross-Validation & System Evaluation Matrix
                     </h2>
-                    <p className="text-xs text-slate-500 mt-0.5">
+                    <p className="text-xs text-slate-300 mt-0.5">
                       Fold-wise accuracy calculated from the same deterministic dataset split logic used by the classifier evaluation.
                     </p>
                   </div>
@@ -4004,7 +4004,7 @@ export default function App() {
                         <Zap className="w-5 h-5 text-blue-600" />
                         Live Pune Event Impact Predictor, XAI & Multi-Model Consensus Engine
                       </h2>
-                      <p className="text-xs text-slate-500 mt-0.5">
+                      <p className="text-xs text-slate-300 mt-0.5">
                         Simulate unseen events in any Pune zone and compute multi-classifier consensus, continuous regression scores, and feature contribution drivers.
                       </p>
                     </div>
@@ -4155,7 +4155,7 @@ export default function App() {
                         <HardDrive className="w-5 h-5 text-blue-600" />
                         Dataset Repository & WEKA ARFF File Generation Hub
                       </h2>
-                      <p className="text-xs text-slate-500 mt-0.5">
+                      <p className="text-xs text-slate-300 mt-0.5">
                         Manage historical event records, generate synthetic datasets, and export WEKA ARFF format.
                       </p>
                     </div>
@@ -4265,7 +4265,7 @@ export default function App() {
                       <Shield className="w-5 h-5 text-blue-600" />
                       FastAPI Backend Hub, REST Endpoints & Pydantic Schemas
                     </h2>
-                    <p className="text-xs text-slate-500 mt-0.5">
+                    <p className="text-xs text-slate-300 mt-0.5">
                       Production FastAPI route definitions and data schemas for Python backend deployment.
                     </p>
                   </div>
@@ -4332,7 +4332,7 @@ def predict_event_impact(payload: EventPredictionInput):
                       <BookOpen className="w-5 h-5 text-blue-600" />
                       Documentation 
                     </h2>
-                    <p className="text-xs text-slate-500 mt-0.5">
+                    <p className="text-xs text-slate-300 mt-0.5">
                       Comprehensive guide to algorithms, equations, star schema design, and viva Q&A defense answers.
                     </p>
                   </div>
@@ -4376,51 +4376,76 @@ Algorithms: K-Means, Hierarchical Clustering, DBSCAN.
           </main>
         </div>
 
+        
         {/* EVENT ANALYSIS DRAWER MODAL */}
         {drawerEvent && (
-          <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[2000] flex justify-end">
-            <div className="w-full max-w-lg bg-white h-full shadow-2xl p-6 overflow-y-auto space-y-6 flex flex-col justify-between">
+          <div className="fixed inset-0 bg-[#020817]/80 backdrop-blur-sm z-[2000] flex justify-end">
+            <div className="w-full max-w-lg bg-[#101d2d] text-slate-100 border-l border-[#2b4057] h-full shadow-2xl p-6 overflow-y-auto space-y-6 flex flex-col justify-between">
+
               <div>
-                <div className="flex items-center justify-between border-b pb-3 mb-4">
+                <div className="flex items-center justify-between border-b border-[#2b4057] pb-3 mb-4">
                   <div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-100 text-blue-800">
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded bg-teal-400/10 text-teal-300 border border-teal-400/20">
                       {drawerEvent.Event_ID}
                     </span>
-                    <h3 className="font-bold text-base text-slate-900 mt-1">{drawerEvent.Event_Name}</h3>
-                    <p className="text-xs text-slate-500">{drawerEvent.Venue} &bull; {drawerEvent.Area}, Pune</p>
+
+                    <h3 className="font-bold text-base text-white mt-2">
+                      {drawerEvent.Event_Name}
+                    </h3>
+
+                    <p className="text-xs text-slate-400 mt-1">
+                      {drawerEvent.Venue} &bull; {drawerEvent.Area}, Pune
+                    </p>
                   </div>
-                  <button 
+
+                  <button
                     onClick={() => setDrawerEvent(null)}
-                    className="p-1 rounded-full hover:bg-slate-100 text-slate-500"
+                    className="p-2 rounded-full hover:bg-slate-700 text-slate-400 hover:text-white transition-colors"
+                    aria-label="Close drawer"
                   >
                     <X className="w-5 h-5" />
                   </button>
                 </div>
 
-                <div className="space-y-3 text-xs">
-                  <div className="p-3 bg-slate-50 rounded border">
-                    <p className="font-bold text-slate-900">Score Breakdown:</p>
-                    <p>Traffic Congestion: <strong>{drawerEvent.Traffic_Congestion}%</strong></p>
-                    <p>Crowd Density: <strong>{drawerEvent.Crowd_Density}%</strong></p>
-                    <p>Parking Stress: <strong>{drawerEvent.Parking_Demand}%</strong></p>
+                <div className="space-y-3 text-sm">
+                  <div className="p-4 bg-[#0b1726] rounded-xl border border-[#2b4057] space-y-3">
+                    <p className="font-bold text-white">
+                      Score Breakdown
+                    </p>
+
+                    <div className="flex justify-between text-slate-300">
+                      <span>Traffic Congestion</span>
+                      <strong className="text-teal-300">
+                        {drawerEvent.Traffic_Congestion}%
+                      </strong>
+                    </div>
+
+                    <div className="flex justify-between text-slate-300">
+                      <span>Crowd Density</span>
+                      <strong className="text-teal-300">
+                        {drawerEvent.Crowd_Density}%
+                      </strong>
+                    </div>
+
+                    <div className="flex justify-between text-slate-300">
+                      <span>Parking Stress</span>
+                      <strong className="text-teal-300">
+                        {drawerEvent.Parking_Demand}%
+                      </strong>
+                    </div>
                   </div>
                 </div>
               </div>
 
               <button
                 onClick={() => setDrawerEvent(null)}
-                className="w-full py-2 bg-slate-900 text-white font-bold text-xs rounded-lg hover:bg-slate-800"
+                className="w-full py-3 bg-teal-400 text-slate-950 font-bold text-sm rounded-lg hover:bg-teal-300 transition-colors"
               >
                 Close Drawer
               </button>
             </div>
           </div>
         )}
-
-        {/* Footer */}
-        <footer className="bg-white border-t border-slate-200 py-3 px-6 text-center text-xs text-slate-500 mt-auto">
-          <p>Pune City Intelligent Event Impact Analysis & Prediction System &bull; Academic Major Project</p>
-        </footer>
       </div>
     </ErrorBoundary>
   );

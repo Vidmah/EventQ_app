@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global layout */
 * {
   box-sizing: border-box;
 }
@@ -19,47 +20,116 @@ body {
   overflow-x: hidden;
 }
 
-/* EVENTPULSE — READABILITY FIX */
+/*
+  EventPulse dashboard theme
+  Keep the landing page styles independent. These overrides are scoped
+  only to the dashboard workspace so old light Tailwind utility classes
+  cannot create white panels with pale text.
+*/
+.ep-shell .ep-workspace {
+  color: #e7eef8;
+  background: #080f1c;
+}
 
-.min-h-screen main .text-slate-900,
-.min-h-screen main .text-slate-800,
-.min-h-screen main .text-gray-900,
-.min-h-screen main .text-gray-800 {
+.ep-shell .ep-workspace [class~="bg-white"],
+.ep-shell .ep-workspace [class~="bg-white/95"] {
+  background-color: #101d2d !important;
+}
+
+.ep-shell .ep-workspace [class~="bg-slate-50"] {
+  background-color: #0d1928 !important;
+}
+
+.ep-shell .ep-workspace [class~="bg-slate-100"] {
+  background-color: #17263a !important;
+}
+
+.ep-shell .ep-workspace [class~="bg-gray-50"],
+.ep-shell .ep-workspace [class~="bg-gray-100"] {
+  background-color: #0d1928 !important;
+}
+
+/* Text colors */
+.ep-shell .ep-workspace [class~="text-slate-900"],
+.ep-shell .ep-workspace [class~="text-slate-800"],
+.ep-shell .ep-workspace [class~="text-gray-900"],
+.ep-shell .ep-workspace [class~="text-gray-800"] {
   color: #edf4ff !important;
 }
 
-.min-h-screen main .text-slate-700,
-.min-h-screen main .text-slate-600 {
+.ep-shell .ep-workspace [class~="text-slate-700"],
+.ep-shell .ep-workspace [class~="text-slate-600"],
+.ep-shell .ep-workspace [class~="text-gray-700"],
+.ep-shell .ep-workspace [class~="text-gray-600"] {
   color: #b5c4d8 !important;
 }
 
-/* KPI numbers */
-.min-h-screen main .text-2xl,
-.min-h-screen main .text-3xl,
-.min-h-screen main .text-4xl {
-  color: #f1f5f9;
+.ep-shell .ep-workspace [class~="text-slate-500"],
+.ep-shell .ep-workspace [class~="text-gray-500"] {
+  color: #91a4bb !important;
 }
 
-/* Card and chart headings */
-.min-h-screen main h2,
-.min-h-screen main h3 {
-  color: #edf4ff !important;
+.ep-shell .ep-workspace [class~="text-blue-600"] {
+  color: #55dbc5 !important;
 }
 
-/* Chart labels */
-.min-h-screen main .recharts-text {
+/* Borders and separators */
+.ep-shell .ep-workspace [class~="border-slate-200"],
+.ep-shell .ep-workspace [class~="border-slate-300"],
+.ep-shell .ep-workspace [class~="border-gray-200"],
+.ep-shell .ep-workspace [class~="border-gray-300"] {
+  border-color: #2b4057 !important;
+}
+
+.ep-shell .ep-workspace [class~="divide-slate-200"] > :not([hidden]) ~ :not([hidden]) {
+  border-color: #26384d !important;
+}
+
+.ep-shell .ep-workspace [class~="border-b"] {
+  border-color: #2b4057;
+}
+
+/* Form controls remain clearly readable */
+.ep-shell .ep-workspace input,
+.ep-shell .ep-workspace select,
+.ep-shell .ep-workspace textarea {
+  color: #e7eef8;
+  background-color: #0b1726;
+  border-color: #344b63;
+}
+
+.ep-shell .ep-workspace input::placeholder,
+.ep-shell .ep-workspace textarea::placeholder {
+  color: #8295ab;
+}
+
+.ep-shell .ep-workspace select option {
+  color: #e7eef8;
+  background: #101d2d;
+}
+
+.ep-shell .ep-workspace input:disabled {
+  color: #a8b8cc;
+  background: #17263a;
+}
+
+/* Hover states for legacy light-theme utility classes */
+.ep-shell .ep-workspace [class~="hover:bg-slate-50"]:hover,
+.ep-shell .ep-workspace [class~="hover:bg-slate-100"]:hover,
+.ep-shell .ep-workspace [class~="hover:bg-blue-50"]:hover {
+  background-color: #172a3d !important;
+}
+
+/* KPI and chart readability */
+.ep-shell .ep-workspace .recharts-text {
   fill: #a8b8cc;
 }
 
-.min-h-screen main .recharts-cartesian-grid line {
+.ep-shell .ep-workspace .recharts-cartesian-grid line {
   stroke: #293c52;
 }
 
-/* Consistent teal accents */
-.min-h-screen main .text-blue-600 {
-  color: #55dbc5 !important;
-}
-/* EventPulse mobile header refinement */
+/* Landing page mobile header refinement */
 @media (max-width: 640px) {
   .ep-page header a {
     flex-shrink: 0;
